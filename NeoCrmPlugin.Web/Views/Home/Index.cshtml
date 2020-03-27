@@ -1,0 +1,334 @@
+﻿@model DropdownModel1
+@{
+    ViewData["Title"] = "Home Page";
+
+    Layout = "~/Views/Shared/_Layout_old.cshtml";
+}
+
+@*<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>*@
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col col-sm-3">
+                <label for="Agent">Agent:</label>
+                <select asp-for="AgentId" asp-items="Model.AgentSelectList" class="form-control">
+                    <option value="">Select Agent</option>
+                </select>
+            </div>
+            <div class="col col-sm-3">
+                <label for="Product">Product:</label>
+                <select asp-for="ProductId" asp-items="Model.ProductSelectList" class="form-control">
+                    <option value="">Select Product</option>
+                </select>
+            </div>
+            <div class="col col-sm-3">
+                <label for="Rating">Rating :</label>
+                <select asp-for="RatingId" asp-items="Model.RatingSelectList" class="form-control">
+                    <option value="">Select Rating</option>
+                </select>
+            </div>
+            <div class="col col-md-3 mt-4">
+                <input type="button" id="btnSubbmit" value="Save" class="btn btn-primary btn-block float-left" />
+            </div>
+        </div>
+        <br />
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row justify-content-center">
+                    <div class="col-md-3">
+                        <button class="btn btn-lg btn-block btn-primary" onclick="checkLoginState()">Login with Facebook</button>
+                        <ul id="pages_list"></ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card card-default">
+                            <div class="card-header">
+                                <h3 class="card-title m-0">Adv Leads</h3>
+                            </div>
+                            <div class="card-body">
+                                <table id="example" class="display" width="100%"></table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title" id="paneltitle">Panel title</h3>
+                            </div>
+                            <div class="panel-body">
+                                <table id="exampleDetail" class="display" width="100%"></table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-12 shadow-sm">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Pro</h4>
+                    </div>
+                    <div class="card-body">
+
+                    </div>
+                </div>
+
+
+
+                <button onclick="checkLoginState()">Login with Facebook</button>
+                <button onclick="getpagelist()">aaa</button>
+                <button onclick="getpagelistabc()">aawa</button>
+                <ul id="pages_list"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+   <script type="text/javascript">
+    $(document).ready(function () {
+     
+
+    });
+</script>
+<script>
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '563362597788967',
+            xfbml: true,
+            version: 'v5.0'
+        });
+    };
+
+    (function (d, s, id) {
+
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+
+    }(document, 'script', 'facebook-jssdk'));
+
+
+    function subscribeApp(page_id, page_access_token) {
+
+        console.log('Subscribed Page to FB Leads Live Update ' + page_id);
+        FB.api('/' + page_id + '/subscribed_apps',
+            'post',
+            { access_token: page_access_token },
+            function (response) {
+                console.log('Successfully subscribed page', response);
+            });
+
+    }
+
+    function checkLoginState() {
+
+        FB.getLoginStatus(function (response) {
+
+            console.log('statusChangeCallback');
+            console.log(response);
+            console.log('successfully logged in', response);
+
+        });
+
+        FB.login(function (response) {
+
+            if (response.status == 'connected') {
+                // Logged into your app and Facebook.
+                FB.api('me/accounts', function (response) {
+                    console.log('successfully retrieved pages', response);
+
+                    var pages = response.data;
+                    for (i = 0, len = pages.length; i < len; i++) {
+                        var page = pages[i];
+                        FB.api(
+                            "/" + page.id + "/leadgen_forms?access_token=" + page.access_token,
+                            function (response) {
+                                console.log('successfully retrieved pages ledgd', response);
+
+                                if (response && !response.error) {
+                                    var table = $('#example').DataTable({
+                                        data: response.data,
+                                        columns: [
+                                            { title: "id", "data": "id" },
+                                            { title: "name", "data": "name" },
+                                            { title: "status", "data": "status" },
+                                            { title: "button", "data": null, "defaultContent": "<button>Click!</button>" }
+                                        ]
+                                    });
+                                    $('#example tbody').on('click', 'button', function () {
+                                        var data = table.row($(this).parents('tr')).data();
+                                        FB.api(
+                                            "/" + data.id + "/leads",
+                                            function (response) {
+                                                console.log('successfully retrieved pages Leads', response);
+                                                if (response && !response.error) {
+                                                    var myObj = [];
+                                                    var form1 = [];
+
+
+                                                    $.each(response.data, function (i, value) {
+                                                        myObj.push({ created_time: value.created_time, full_name: value.field_data[0].values[0], phone: value.field_data[1].values[0], email: value.field_data[1].values[0] });
+                                                        var form = {
+                                                            LeadName: data.name,
+                                                            LeadSubject: data.name,
+                                                            LeadDescription: data.name,
+                                                            CustomerName: value.field_data[0].values[0],
+                                                            CustomerPhone: value.field_data[1].values[0],
+                                                            CustomerEmail: value.field_data[1].values[0]
+                                                        };
+                                                        form1.push(form);
+                                                        //$.each(value.field_data, function (a, valuechild) {
+                                                        //    myObj.push({ created_time: value.created_time, "full_name": valuechild[0] });
+                                                        //});
+
+                                                    });
+
+                                                    $('#btnSubbmit').on('click', function (e) {
+                                                        e.preventDefault();
+                                                        if ($('#AgentId').val() == "") {
+                                                            alert("please select agent");
+                                                            return;
+                                                        }
+                                                        if ($('#ProductId').val() == "") {
+                                                            alert("please select product");
+                                                            return;
+                                                        }
+                                                        if ($('#RatingId').val() == "") {
+                                                            alert("please select Rating");
+                                                            return;
+                                                        }
+                                                        var model = {
+                                                            "AgentId": $('#AgentId').val(),
+                                                            "ProductId": $('#ProductId').val(),
+                                                            "RatingId": $('#RatingId').val(),
+                                                            "FormData": form1
+                                                        }
+                                                        $.ajax({
+                                                            type: "POST",
+                                                            url: "@Url.Action("SaveData","Home")",
+                                                            data: JSON.stringify(model),
+                                                            contentType: 'application/json',
+                                                            dataType: "json",
+                                                            success: successFunc,
+                                                            error: errorFunc
+                                                        });
+
+                                                        function successFunc(data) {
+                                                            if (data) {
+                                                                alert("saved successfully");
+                                                            }
+
+                                                        }
+
+                                                        function errorFunc() {
+                                                            alert('error');
+                                                        }
+                                                    });
+                                                    $("#paneltitle").html(data.name);
+                                                    //  $('#exampleDetail').DataTable().distroy();
+                                                    var table1 = $('#exampleDetail').DataTable({
+                                                        destroy: true,
+                                                        data: myObj,
+                                                        columns: [
+                                                            { title: "created_time", "data": "created_time" },
+                                                            { title: "full_name", "data": "full_name" },
+                                                            { title: "phone", "data": "phone" },
+                                                            { title: "email", "data": "email" }
+                                                        ]
+                                                    });
+                                                    console.log("custom My obje", myObj)
+                                                    /* handle the result */
+                                                }
+                                            }
+                                        );
+
+                                    });
+
+                                    //var dataresponse = response.data;
+                                    //for (a = 0, len = dataresponse.length; a < len; a++)
+                                    //{
+                                    //    FB.api(
+                                    //        "/" + dataresponse[a].id+"/leads",
+                                    //        function (response) {
+                                    //            console.log('successfully retrieved pages Leads', response);
+                                    //            if (response && !response.error) {
+                                    //                /* handle the result */
+                                    //            }
+                                    //        }
+                                    //    );
+                                    //}
+
+                                }
+                            }
+                        );
+
+                    }
+
+                    var select = document.getElementById('pages_list');
+                    for (i = 0, len = pages.length; i < len; i++) {
+                        var page = pages[i];
+                        var option = document.createElement('option');
+
+                        option.value = page.id + ";" + page.name;
+                        option.innerHTML = page.name;
+                        select.appendChild(option);
+                    }
+
+                    $("#pages-display").css("display", "block");
+                    $("#div_subscribed_pages").css("display", "block");
+                    $("#div-unsubscribe").css("display", "block");
+                });
+
+            }
+            else if (response.status == 'not_authorized') {
+                // The person is logged into Facebook, but not your app.
+                $("#pages-display").css("display", "none");
+                $("#div_subscribed_pages").css("display", "none");
+                $("#div-unsubscribe").css("display", "none");
+            }
+            else {
+                // The person is not logged into Facebook, so we're not sure if
+                // they are logged into this app or not.
+                $("#pages-display").css("display", "none");
+                $("#div_subscribed_pages").css("display", "none");
+                $("#div-unsubscribe").css("display", "none");
+            }
+        }, { scope: 'public_profile,manage_pages' });
+    }
+    function getpagelist() {
+        FB.api(
+            "/2654637841321059/leads",
+            function (response) {
+                console.log('successfully retrieved pages', response);
+                if (response && !response.error) {
+                    /* handle the result */
+                }
+            }
+        );
+    };
+    function getpagelistabc() {
+        FB.api(
+            "/1441000585947464/leadgen_forms?access_token",
+            function (response) {
+                console.log('successfully retrieved pages', response);
+                if (response && !response.error) {
+                    /* handle the result */
+                }
+            }
+        );
+    };
+
+</script>
+}    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>*@
+  

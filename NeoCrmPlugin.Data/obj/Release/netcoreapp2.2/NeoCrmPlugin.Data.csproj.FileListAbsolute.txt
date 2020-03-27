@@ -1,0 +1,9 @@
+E:\Product Development\NeoCrmPlugin\NeoCrmPlugin\NeoCrmPlugin.Data\bin\Release\netcoreapp2.2\NeoCrmPlugin.Data.deps.json
+E:\Product Development\NeoCrmPlugin\NeoCrmPlugin\NeoCrmPlugin.Data\bin\Release\netcoreapp2.2\NeoCrmPlugin.Data.dll
+E:\Product Development\NeoCrmPlugin\NeoCrmPlugin\NeoCrmPlugin.Data\bin\Release\netcoreapp2.2\NeoCrmPlugin.Data.pdb
+E:\Product Development\NeoCrmPlugin\NeoCrmPlugin\NeoCrmPlugin.Data\obj\Release\netcoreapp2.2\NeoCrmPlugin.Data.csprojResolveAssemblyReference.cache
+E:\Product Development\NeoCrmPlugin\NeoCrmPlugin\NeoCrmPlugin.Data\obj\Release\netcoreapp2.2\NeoCrmPlugin.Data.csproj.CoreCompileInputs.cache
+E:\Product Development\NeoCrmPlugin\NeoCrmPlugin\NeoCrmPlugin.Data\obj\Release\netcoreapp2.2\NeoCrmPlugin.Data.AssemblyInfoInputs.cache
+E:\Product Development\NeoCrmPlugin\NeoCrmPlugin\NeoCrmPlugin.Data\obj\Release\netcoreapp2.2\NeoCrmPlugin.Data.AssemblyInfo.cs
+E:\Product Development\NeoCrmPlugin\NeoCrmPlugin\NeoCrmPlugin.Data\obj\Release\netcoreapp2.2\NeoCrmPlugin.Data.dll
+E:\Product Development\NeoCrmPlugin\NeoCrmPlugin\NeoCrmPlugin.Data\obj\Release\netcoreapp2.2\NeoCrmPlugin.Data.pdb

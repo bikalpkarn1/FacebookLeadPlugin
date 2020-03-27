@@ -1,0 +1,18 @@
+D:\Chandra Work Folder\New Projects\NeoCrmPlugin\NeoCrmPlugin.Data\bin\Debug\netcoreapp2.2\NeoCrmPlugin.Data.deps.json
+D:\Chandra Work Folder\New Projects\NeoCrmPlugin\NeoCrmPlugin.Data\bin\Debug\netcoreapp2.2\NeoCrmPlugin.Data.dll
+D:\Chandra Work Folder\New Projects\NeoCrmPlugin\NeoCrmPlugin.Data\obj\Debug\netcoreapp2.2\NeoCrmPlugin.Data.csproj.CoreCompileInputs.cache
+D:\Chandra Work Folder\New Projects\NeoCrmPlugin\NeoCrmPlugin.Data\obj\Debug\netcoreapp2.2\NeoCrmPlugin.Data.AssemblyInfoInputs.cache
+D:\Chandra Work Folder\New Projects\NeoCrmPlugin\NeoCrmPlugin.Data\obj\Debug\netcoreapp2.2\NeoCrmPlugin.Data.AssemblyInfo.cs
+D:\Chandra Work Folder\New Projects\NeoCrmPlugin\NeoCrmPlugin.Data\obj\Debug\netcoreapp2.2\NeoCrmPlugin.Data.csprojAssemblyReference.cache
+D:\Chandra Work Folder\New Projects\NeoCrmPlugin\NeoCrmPlugin.Data\bin\Debug\netcoreapp2.2\NeoCrmPlugin.Data.pdb
+D:\Chandra Work Folder\New Projects\NeoCrmPlugin\NeoCrmPlugin.Data\obj\Debug\netcoreapp2.2\NeoCrmPlugin.Data.dll
+D:\Chandra Work Folder\New Projects\NeoCrmPlugin\NeoCrmPlugin.Data\obj\Debug\netcoreapp2.2\NeoCrmPlugin.Data.pdb
+E:\Product Development\NeoCrmPlugin\NeoCrmPlugin\NeoCrmPlugin.Data\obj\Debug\netcoreapp2.2\NeoCrmPlugin.Data.csprojResolveAssemblyReference.cache
+E:\Product Development\NeoCrmPlugin\NeoCrmPlugin\NeoCrmPlugin.Data\obj\Debug\netcoreapp2.2\NeoCrmPlugin.Data.csproj.CoreCompileInputs.cache
+E:\Product Development\NeoCrmPlugin\NeoCrmPlugin\NeoCrmPlugin.Data\obj\Debug\netcoreapp2.2\NeoCrmPlugin.Data.AssemblyInfoInputs.cache
+E:\Product Development\NeoCrmPlugin\NeoCrmPlugin\NeoCrmPlugin.Data\obj\Debug\netcoreapp2.2\NeoCrmPlugin.Data.AssemblyInfo.cs
+E:\Product Development\NeoCrmPlugin\NeoCrmPlugin\NeoCrmPlugin.Data\obj\Debug\netcoreapp2.2\NeoCrmPlugin.Data.dll
+E:\Product Development\NeoCrmPlugin\NeoCrmPlugin\NeoCrmPlugin.Data\obj\Debug\netcoreapp2.2\NeoCrmPlugin.Data.pdb
+E:\Product Development\NeoCrmPlugin\NeoCrmPlugin\NeoCrmPlugin.Data\bin\Debug\netcoreapp2.2\NeoCrmPlugin.Data.deps.json
+E:\Product Development\NeoCrmPlugin\NeoCrmPlugin\NeoCrmPlugin.Data\bin\Debug\netcoreapp2.2\NeoCrmPlugin.Data.dll
+E:\Product Development\NeoCrmPlugin\NeoCrmPlugin\NeoCrmPlugin.Data\bin\Debug\netcoreapp2.2\NeoCrmPlugin.Data.pdb

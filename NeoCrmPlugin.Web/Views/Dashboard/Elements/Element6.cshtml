@@ -1,0 +1,122 @@
+
+
+<div class="row">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box bg-aqua">
+            <span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">Total Customer</span>
+                <span class="info-box-number" data-bind="text: totalCustomer">41,410</span>
+
+                <div class="progress">
+                    <div class="progress-bar" style="width: 70%"></div>
+                </div>
+                <span class="progress-description">
+                    10% Increase in 30 Days
+                </span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box bg-green">
+            <span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">MTD Cusomter</span>
+                <span class="info-box-number" data-bind="text: ThisMonthCustomer">41,410</span>
+
+                <div class="progress">
+                    <div class="progress-bar" style="width: 70%"></div>
+                </div>
+                <span class="progress-description">
+                    70% Increase in 30 Days
+                </span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box bg-yellow">
+            <span class="info-box-icon"><i class="fa fa-calendar"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">Last Month</span>
+                <span class="info-box-number" data-bind="text: LastMonthCustomer">41,410</span>
+
+                <div class="progress">
+                    <div class="progress-bar" style="width: 70%"></div>
+                </div>
+                <span class="progress-description">
+                    70% Increase in 30 Days
+                </span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box bg-red">
+            <span class="info-box-icon"><i class="fa fa-comments-o"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">Today Customers</span>
+                <span class="info-box-number" data-bind="text: TodayCustomer">41,410</span>
+
+                <div class="progress">
+                    <div class="progress-bar" style="width: 70%"></div>
+                </div>
+                <span class="progress-description">
+                    70% Increase in 30 Days
+                </span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+</div>
+
+<script>
+    function vm() {
+    var self = this;
+
+    // Properties
+    self.totalCustomer = ko.observable();
+    self.ThisMonthCustomer = ko.observable();
+    self.LastMonthCustomer = ko.observable();
+    self.TodayCustomer = ko.observable();
+    // consists of entryPostedDate, blogEntryLink, title, body
+    var blogApi = "/api/Dashboard/DashboardWidgets";
+ $.ajax(
+        {
+            type: "get",
+            url: blogApi,
+            
+            error: function (result) {
+                alert("error");
+            },
+            success: function (result) {
+                debugger;
+                self.totalCustomer(result.data.totalCustomer);
+                self.ThisMonthCustomer(result.data.thisMonthCustomer);
+                self.LastMonthCustomer(result.data.lastMonthCustomer);
+                self.TodayCustomer(result.data.todayCustomer);
+            }
+        });
+
+    // Load data
+    //$.getJSON(blogApi)
+    //    .success(function (data) {
+    //        debugger;
+    //        self.totalCustomer(data);
+    //    });
+    }
+ko.applyBindings(new vm());
+</script>

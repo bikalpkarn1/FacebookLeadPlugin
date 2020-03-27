@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeoCrmPlugin.Web", "NeoCrmPlugin.Web\NeoCrmPlugin.Web.csproj", "{63758A3F-5E79-44E6-880D-3F8E1B57F772}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeoCrmPlugin.Data", "NeoCrmPlugin.Data\NeoCrmPlugin.Data.csproj", "{4EDD787D-3FE5-41E4-94A6-C1EF4D1140D7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{63758A3F-5E79-44E6-880D-3F8E1B57F772}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63758A3F-5E79-44E6-880D-3F8E1B57F772}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63758A3F-5E79-44E6-880D-3F8E1B57F772}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63758A3F-5E79-44E6-880D-3F8E1B57F772}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EDD787D-3FE5-41E4-94A6-C1EF4D1140D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EDD787D-3FE5-41E4-94A6-C1EF4D1140D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EDD787D-3FE5-41E4-94A6-C1EF4D1140D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EDD787D-3FE5-41E4-94A6-C1EF4D1140D7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BD16A361-F2AA-4317-82A8-4DA14266ADEE}
+	EndGlobalSection
+EndGlobal
